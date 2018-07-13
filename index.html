@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     </head>
 
-    <body>
+    <body onload ="fetchIssues()">
         <div class ="container">
             <h1> JS IssueTracker <small> by I Am Me</small></h1>
             <div class ="jumbotron">
@@ -26,7 +26,7 @@
                         </div>
                     <div class ="form-group">
                         <label for="issueAssignedToInput">Assigned To</label>
-                        <input type="text" class ="form-control" id ="issueAassignedToInput" placeholder="Enter responsible ...">
+                        <input type="text" class ="form-control" id ="issueAssignedToInput" placeholder="Enter responsible ...">
                     </div>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </form>
