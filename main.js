@@ -6,7 +6,7 @@ function deleteIssue(id){
 
     for(var i=0; i < issues.legnth; i++){
         if(issues[i].id == id){
-            issues.splice(i,1);
+            issues.splice(i, 1);
         }
     }
     // localStorage.setItem('key', 'value');
@@ -20,7 +20,7 @@ function setStatusClosed(id){
 
     for(var i=0; i < issues.length;i++){
         if (issues[i].id == id){
-            issues.status = 'Closed';
+            issues[i].status = 'Closed';
         }
     }
     
@@ -79,7 +79,7 @@ function saveIssue(e){
 function fetchIssues(){
     var issues = JSON.parse(localStorage.getItem('issues'));
     var issuesList = document.getElementById('issuesList');
-
+    
     issuesList.innerHTML = '';
 
     for (var i =0; i < issues.length; i++){
@@ -94,7 +94,7 @@ function fetchIssues(){
                                 '<p><span class="label label-info">'+ status +'</span></p>'+
                                 '<h3>' + desc + '</h3>'+
                                 '<p><span class="glyphicon glyphicon-time"></span>' + severity + '</p>'+
-                                '<p><span class="glyphicon glyphicon-time"></span>' + assignedTo + '</p>'+
+                                '<p><span class="glyphicon glyphicon-user"></span>' + assignedTo + '</p>'+
                                 '<a href="#" onClick ="setStatusClosed(\''+id+'\')" class="btn btn-warning">Close</a>'+
                                 '<a href="#" onClick ="deleteIssue(\''+id+'\')" class="btn btn-danger">Delete</a>'+
                                 '</div>';
