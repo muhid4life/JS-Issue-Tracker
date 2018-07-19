@@ -1,20 +1,6 @@
 document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
 
 
-function deleteIssue(id){
-    var issues = JSON.parse(localStorage.getItem('issues'));
-
-    for(var i=0; i < issues.legnth; i++){
-        if(issues[i].id == id){
-            issues.splice(i, 1);
-        }
-    }
-    // localStorage.setItem('key', 'value');
-    localStorage.setItem('issues',JSON.stringify(issues));
-    fetchIssues();
-    
-}
-
 function setStatusClosed(id){
     var issues = JSON.parse(localStorage.getItem('issues'));
 
@@ -26,6 +12,22 @@ function setStatusClosed(id){
     
     localStorage.setItem('issues',JSON.stringify(issues));
     fetchIssues();
+}
+
+function deleteIssue(id){
+   
+    var issues = JSON.parse(localStorage.getItem('issues'));
+
+    for(var i=0; i < issues.legnth; i++){
+        if(issues[i].id == id){
+            issues.splice(i,1)
+            
+        }
+    }
+    // localStorage.setItem('key', 'value');
+    localStorage.setItem('issues',JSON.stringify(issues));
+    fetchIssues();
+    
 }
 
 /* function setStatusOpen(id){
@@ -69,7 +71,7 @@ function saveIssue(e){
         localStorage.setItem('issues', JSON.stringify(issues));
     }
     //clear the input form
-    document.getElementById('issueInputForm').requestFullscreen();
+    document.getElementById('issueInputForm').requestFullScreen();
     //printout  our new Issue
     fetchIssues();
     //prevent form from submitting the default values
