@@ -1,47 +1,63 @@
 document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
 
-
-function setStatusClosed(id){
+// TODO change the setStatusClosed(id) and ssetStatusOpen(id) to a single method
+function changeStatus(id){
     var issues = JSON.parse(localStorage.getItem('issues'));
 
     for(var i=0; i < issues.length;i++){
         if (issues[i].id == id){
-            issues[i].status = 'Closed';
+            if(issues[i].status == 'Closed'){
+                issues[i].status = 'Open';
+            }else{
+                issues[i].status = 'Closed';
+            }
         }
     }
-    
+
     localStorage.setItem('issues',JSON.stringify(issues));
     fetchIssues();
 }
+
+// function changeStatusValueDisplay(id){
+//     var issues = JSON.parse(localStorage.getItem('issues'));
+//         var status="close"
+//         for(var i=0; i < issues.length;i++){
+//             if (issues[i].id == id){
+//                 if(issues[i].status == 'Closed'){
+//                     status = "Close"
+//                     localStorage.setItem('issues',JSON.stringify(issues));
+//                     return status;
+//                 }else{
+//                     status = "Open"
+//                     localStorage.setItem('issues',JSON.stringify(issues));
+//                     return status;
+//             }
+//         }
+//     }
+//     localStorage.setItem('issues',JSON.stringify(issues));
+    
+//     return status;
+// }
 
 function deleteIssue(id){
-   
-    var issues = JSON.parse(localStorage.getItem('issues'));
-
-    for(var i=0; i < issues.legnth; i++){
-        if(issues[i].id == id){
-            issues.splice(i,1)
-            
-        }
-    }
-    // localStorage.setItem('key', 'value');
-    localStorage.setItem('issues',JSON.stringify(issues));
-    fetchIssues();
     
-}
-
-/* function setStatusOpen(id){
-    var issues = JSOn.parse(localStorage.getItem('Issues'));
-
-    for(var i=0; i < issues.length;i++){
-        if (issues[i].id ==id){
-            issues.status = 'Open';
-        }
-    }
-
-    localStorage.setItem(issues,JSON.stringify(issues));
-    fetchIssues();
-} */
+     var issues = JSON.parse(localStorage.getItem('issues'));
+     console.log(issues);
+     for(var i=0; i < issues.length; i++){
+         if(issues[i].id == id){
+             console.log(issues[i].id);
+             console.log("index is"+i);
+             issues=issues.splice(id,1);
+             console.log(issues);   
+             console.log(issues.length);
+             break;
+         }
+     }
+     // localStorage.setItem('key', 'value');
+     localStorage.setItem('issues',JSON.stringify(issues));
+     fetchIssues();
+     
+ }
 
 function saveIssue(e){
     var issueDesc = document.getElementById('issueDescInput').value;
@@ -97,7 +113,7 @@ function fetchIssues(){
                                 '<h3>' + desc + '</h3>'+
                                 '<p><span class="glyphicon glyphicon-time"></span>' + severity + '</p>'+
                                 '<p><span class="glyphicon glyphicon-user"></span>' + assignedTo + '</p>'+
-                                '<a href="#" onClick ="setStatusClosed(\''+id+'\')" class="btn btn-warning">Close</a>'+
+                                '<a href="#" onClick ="changeStatus(\''+id+'\')" class="btn btn-warning">Close</a>'+
                                 '<a href="#" onClick ="deleteIssue(\''+id+'\')" class="btn btn-danger">Delete</a>'+
                                 '</div>';
     }
