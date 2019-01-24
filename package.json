@@ -1,0 +1,24 @@
+{
+  "name": "JS-Issue-Tracker",
+  "version": "1.0.0",
+  "description": "A  pure java script app to keep track of issues",
+  "main": "main.js",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  },
+  "scripts": {
+    "start": "http-server -p 8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhid4life/JS-Issue-Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muhid4life/JS-Issue-Tracker/issues"
+  },
+  "homepage": "https://github.com/muhid4life/JS-Issue-Tracker#readme"
+}
